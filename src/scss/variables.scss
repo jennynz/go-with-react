@@ -1,2 +1,5 @@
 $square-width: 34px;
-$stone-radius: calc(#{$square-width}/2);
+$stone-diam: 30px;
+$stone-radius: 15px;
+// $stone-diam: calc(#{$square-width} - 4);
+// $stone-radius: calc( #{$stone-diam} / 2 );

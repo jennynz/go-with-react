@@ -1,9 +1,9 @@
 .Stone {
-  width: $square-width;
-  height: $square-width;
-  -moz-border-radius: $stone-radius;
-  -webkit-border-radius: $stone-radius;
-  border-radius: $stone-radius;
+  width: 30px;
+  height: 30px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
 }
 
 .Stone-black { background: #222; }
