@@ -55,11 +55,11 @@ ol, ul {
   background: #ddd; }
 
 .Stone {
-  width: 30px;
-  height: 30px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  border-radius: 15px; }
+  width: calc(34px - 4px);
+  height: calc(34px - 4px);
+  -moz-border-radius: calc( calc(34px - 4px) / 2);
+  -webkit-border-radius: calc( calc(34px - 4px) / 2);
+  border-radius: calc( calc(34px - 4px) / 2); }
 
 .Stone-black {
   background: #222; }
