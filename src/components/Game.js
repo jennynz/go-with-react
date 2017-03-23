@@ -9,9 +9,10 @@ class Game extends React.Component {
         squares: Array(9).fill(null),
       }],
       stepNumber: 0,
-      xIsNext: true,
+      blackIsNext: true,
     };
   }
+
   handleClick(i) {
     var history = this.state.history.slice(0, this.state.stepNumber + 1);
     var current = history[history.length - 1];
@@ -20,32 +21,39 @@ class Game extends React.Component {
       return;
     }
 
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = this.state.blackIsNext ?
+      <Stone stoneClass="Stone Stone-black" /> :
+      <Stone stoneClass="Stone Stone-white" />;
 
     this.setState({
       history: history.concat([{
         squares: squares
       }]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
+      blackIsNext: !this.state.blackIsNext,
     });
   }
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) ? false : true,
+      blackIsNext: (step % 2) ? false : true,
     });
   }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
 
     const winner = calculateWinner(current.squares);
     let status;
+    let nextStone = null;
     if (winner) {
       status = 'Winner: ' + winner;
     } else {
-      status = 'Next move: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next move: ';
+      nextStone = this.state.blackIsNext ?
+        <Stone stoneClass="Stone Stone-black" /> :
+        <Stone stoneClass="Stone Stone-white" />;
     }
 
     const moves = history.map((step, move) => {
@@ -68,7 +76,7 @@ class Game extends React.Component {
           />
         </div>
         <div className="Game-info">
-          <div>{status}</div>
+          <div>{status}{nextStone}</div>
           <ol>{moves}</ol>
         </div>
       </div>
@@ -96,6 +104,13 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+
+function Stone(props) {
+  return (
+    <div className={props.stoneClass}></div>
+  );
 }
 
 export default Game;

@@ -1,0 +1,10 @@
+.Stone {
+  width: $square-width;
+  height: $square-width;
+  -moz-border-radius: $stone-radius;
+  -webkit-border-radius: $stone-radius;
+  border-radius: $stone-radius;
+}
+
+.Stone-black { background: #222; }
+.Stone-white { background: #eee; }
